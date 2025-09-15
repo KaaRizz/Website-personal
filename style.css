@@ -1,0 +1,134 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Animated Gradient Background */
+body {
+  margin: 0;
+  color: #fff;
+  text-align: center;
+  min-height: 100vh;
+
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Hero section */
+.hero {
+  padding: 80px 20px;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* About section */
+.about {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  padding: 50px 20px;
+  border-radius: 20px;
+  margin: 40px auto;
+  max-width: 800px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.about p {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* Social section */
+.socials {
+  padding: 50px 20px;
+}
+
+.socials h2 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+}
+
+/* Social icons */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.container .icon {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.container .icon span {
+  height: 70px;
+  width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.25);
+}
+
+/* Tooltip */
+.container .tooltip {
+  position: absolute;
+  top: -35px;
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+.container .icon:hover .tooltip {
+  opacity: 1;
+  top: -45px;
+}
+
+/* Hover effect */
+.container .icon span:hover {
+  transform: scale(1.1) rotate(8deg);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+}
+
+/* Brand colors */
+.instagram span { background: linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5); }
+.youtube span { background: #ff0000; }
+.tiktok span { background: linear-gradient(45deg,#25f4ee,#000000,#fe2c55); }
