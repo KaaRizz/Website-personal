@@ -329,6 +329,15 @@ margin-top:15px;
 
 }
 
+button{
+    touch-action: manipulation;
+}
+
+body{
+    overflow:hidden;
+    touch-action:manipulation;
+}
+
 /* ===========================
    RESPONSIVE MOBILE
 =========================== */
@@ -392,6 +401,40 @@ button{
     font-size:18px;
     padding:0 20px;
     text-align:center;
+}
+
+.success{
+
+position:fixed;
+
+inset:0;
+
+background:linear-gradient(135deg,#ffd6e7,#fff);
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+animation:zoom .8s ease;
+
+}
+
+@keyframes zoom{
+
+0%{
+transform:scale(.5);
+opacity:0;
+}
+
+100%{
+transform:scale(1);
+opacity:1;
+}
+
 }
 
 }
@@ -517,11 +560,78 @@ no.addEventListener("touchstart",moveButton);
 // tombol YES
 yes.addEventListener("click",()=>{
 
+    // Mainkan musik (jika ada)
+    const music = document.getElementById("bgm");
+    if(music){
+        music.play();
+    }
+
+    // Background berubah
+    document.body.style.background="linear-gradient(135deg,#ff9ec4,#ffd6e7)";
+
+    // Tampilkan halaman sukses
     success.style.display="flex";
 
+    success.innerHTML=`
+        <h1>YAYYY ❤️</h1>
+        <p>Thank you for saying YES 🥹</p>
+        <h2 style="margin-top:20px;font-size:32px;color:#ff4f86;">
+            I LOVE YOU 💖
+        </h2>
+    `;
+
     createHearts();
+    createConfetti();
 
 });
+
+function createConfetti(){
+
+    for(let i=0;i<120;i++){
+
+        const conf = document.createElement("div");
+
+        conf.style.position = "fixed";
+        conf.style.left = Math.random()*100+"vw";
+        conf.style.top = "-20px";
+
+        conf.style.width = "10px";
+        conf.style.height = "10px";
+
+        const colors = [
+            "#ff4f86",
+            "#ffd700",
+            "#4CAF50",
+            "#2196F3",
+            "#FF9800"
+        ];
+
+        conf.style.background =
+        colors[Math.floor(Math.random()*colors.length)];
+
+        conf.style.borderRadius = "50%";
+        conf.style.zIndex = "9999";
+
+        document.body.appendChild(conf);
+
+        const x = (Math.random()-0.5)*300;
+        const y = window.innerHeight + 100;
+
+        conf.animate([
+            { transform:"translate(0,0) rotate(0deg)" },
+            { transform:`translate(${x}px,${y}px) rotate(720deg)` }
+        ],{
+            duration:3000,
+            easing:"ease-out"
+        });
+
+        setTimeout(()=>{
+            conf.remove();
+        },3000);
+
+    }
+
+}
 
 // animasi hati
 function createHearts(){
